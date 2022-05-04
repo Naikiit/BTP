@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+ <title>BTP</title>
+ <link rel="stylesheet" type="text/css" href="{% static 'styles/style.css' %}">
+<link href= "{% static 'https://fonts.googleapis.com/css?family=Montserrat' %}" rel="stylesheet">
+</head>
+<body>
+
+<header class="site-header clearfix">
+    <nav>
+        <div class="logo">Vlsi</div>
+        <input type="checkbox" id="click">
+        <label for="click" class="menu-btn">
+          <i class="fas fa-bars"></i>
+        </label>
+        <ul>
+          <li><a class="active" href="#">Home</a></li>
+          <li><a href="#">Contact Us</a></li>
+
+          {% if user.is_authenticated %} 
+          <li>Hi,{{user.first_name}}</li>
+          <li><a href="accounts/logout">Logout</a></li>
+          {% else %} 
+          <li><a href="accounts/login">login</a></li>
+          <li><a href="accounts/register">Signup</a></li>
+          {% endif %} 
+        </ul>
+      </nav>
+ <section>
+  <div class="leftside"> 
+   <img src="{% static 'img/intro.jpg' %}">
+  </div>
+  <div class="rightside"> 
+   <h1>Vlsi</h1>
+   <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestias, tenetur? A eligendi numquam labore iure at iusto aliquid totam ducimus expedita id. Dolores illum deleniti quae id odio blanditiis dolor!</p>
+   <button>Start the tool</button>
+  </div>
+  
+ </section>
+
+</header>
+
+
+</body>
+</html>

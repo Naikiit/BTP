@@ -1,0 +1,60 @@
+{% load static %}
+{% load socialaccount %}
+{% providers_media_js %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link  rel="stylesheet"  href="{% static 'styles/login.css' %}" type="text/css">
+
+</head>
+<body>
+    
+    <div class="container">
+        <div class="screen">
+            <div class="screen__content">
+                <form class="login" action=" login" method="post">
+                    {% csrf_token %} 
+                    <div class="login__field">
+                        <i class="login__icon fa fa-user"></i>
+                        <input type="text" name="username" class="login__input" placeholder="Username">
+                    </div>
+                    <div class="login__field">
+                        <i class="login__icon fa fa-lock"></i>
+                        <input type="password" name = "password" class="login__input" placeholder="Password">
+                    </div>
+                    <button class="button login__submit">
+                        <span class="button__text">Log In Now</span>
+                        <i class="button__icon fa fa-chevron-right"></i>
+                    </button>				
+                </form>
+                {% for message in messages %}
+                <h3 style="color:black">{{message}}</h3>
+                {% endfor %}
+                <div class="social-login">
+                    <h3>log in via</h3>
+                    <div class="social-icons">
+                        {{user}}
+                        <button><a href="{% provider_login_url  "facebook" method = "js_sdk" %}" class="social-login__icon fa fa-facebook"></a></button>
+                        <button><a href="{% provider_login_url  "google" method = "js_sdk" %}" class="social-login__icon fa fa-google"></a></button>
+                        <button><a href="www.twitter.com" class="social-login__icon fa fa-twitter"></a></button>
+                    </div>
+                </div>
+            </div>
+            <div class="screen__background">
+                <span class="screen__background__shape screen__background__shape4"></span>
+                <span class="screen__background__shape screen__background__shape3"></span>		
+                <span class="screen__background__shape screen__background__shape2"></span>
+                <span class="screen__background__shape screen__background__shape1"></span>
+            </div>		
+        </div>
+    </div>
+      
+      
+    
+</body>
+</html>
